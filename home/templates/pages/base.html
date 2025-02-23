@@ -1,0 +1,318 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <link
+      rel="stylesheet"
+      href="{% static 'css/bootstrap.css' %}"
+      type="text/css"
+    />
+    <title>
+      {% block title %}
+  
+   {% endblock %}
+    </title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}" />
+    <!-- <link rel="stylesheet" href="../../../static/css/bootstrap.min.css"> -->
+    <!-- <link rel="stylesheet" href="../../../static/css/style.css"> -->
+    <style>
+      p{
+        margin:0;
+      }
+      a {
+        text-decoration: none;
+        color: #000;
+      }
+      section {
+        max-width: 1200px;
+        margin: 0 auto;
+      }
+      header {
+        background-color: rgb(46, 57, 191);
+        transition: 0.3s;
+        position: fixed;
+        left: 0;
+        top: 0;
+        
+        padding: 15px 240px;
+        right: 0;
+      }
+
+      .bg-whitee{
+        background: #E6E6FA;
+        color: black;
+
+      }
+
+      .bg-whitee .nav-link{
+        color: black;
+      }
+      .hihihihihi{
+        background-color: rgb(46, 57, 191);
+        height: 100vh;
+        display: flex;
+        align-items: center;
+      }
+      .left {
+        padding: 0;
+      }
+      .button-cs {
+        outline: none;
+        border: none;
+        border-radius: 5px;
+        border: 1px solid white;
+        padding: 8px 13px;
+        display: inline-block;
+        color: white;
+        background: rgb(93,237,143);
+        background: linear-gradient(to right, #21d397 0%, #7450fe 100%);
+      }
+
+      .heading-line {
+        display: flex;
+        align-items: center;
+        margin-top: 140px;
+      }
+
+      .heading-line .line {
+        width: 30px;
+        height: 2px;
+        background-color: #fff;
+      }
+
+      .typewrite {
+        color : #0dcaf0;
+        text-decoration: none;
+      }
+      .bg-solu {
+        background-image: url(https://robostam.netlify.app/img/core-img/cir-left.png);
+        background-repeat: no-repeat;
+        background-color: #fff;
+      }
+      .solution{
+        display: flex;
+        padding: 120px 0px;
+      }
+      .solution-img{
+        width: 100%;
+      }
+      .h{
+        color: black;
+      }
+      .about-us{
+        background-image: url(https://robostam.netlify.app/img/svg/ico-about-bg.svg);
+      }
+    </style>
+  </head>
+  <body class="text-dark body">
+    <header class=" d-flex items-center align-items-center text-light">
+      <div class="">
+        <div class="icon d-flex">
+          <div class="right d-flex items-center align-items-center">
+            <img
+              src="https://robostam.netlify.app/img/core-img/logo.png"
+              alt=""
+            />
+            <p class="h3">Robostam</p>
+          </div>
+          <div class="left d-flex items-center align-items-center fw-bold">
+            <li class="nav-item">
+              <a class="nav-link" href="#">HOME</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">ABOUT</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">SERVICES</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">FAQ</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">BLOG</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">CONTACT</a>
+            </li>
+          </div>
+          <div class="d-flex items-center align-items-center">
+            <button type="button" class="button-cs ">
+              LOG IN
+            </button>
+          </div>
+        </div>
+      </div>
+    </header>
+    <div class="hihihihihi">
+      <section class="body d-flex gap-5" style="margin-left: 240px; margin-right: 240px">
+        <div class="left w-50">
+          <div class="left-top">
+            <div class="heading-line">
+              <span class="line"></span>
+              <h5 style="margin-left: 10px;" class="text-info">
+                Data Analysis helps your Business grow faster
+              </h5>
+            </div>
+            <h2 style="margin-top: 50px">
+              Artificial Intelligence helps you
+            </h2>
+            <h1>
+              <a href="" class="typewrite" data-period="2000" data-type='[ "Grow Faster.", "Manage like A Pro.", "Scale to Success." ]'>
+                <span class="wrap"></span>
+              </a>
+            </h1>
+            <p style="margin-top: 50px">
+              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Odit quaerat est, a labore excepturi rem sed eius facere error! Dolore in perspiciatis porro dolor debitis
+            </p>
+          </div>
+          <div class="left-bottom">
+            <button type="button" class="button-cs">
+              CHOOSE DEMO
+            </button>
+            <button type="button" class="button-cs">LEARN MORE</button>
+          </div>
+        </div>
+        <div class="right w-50">
+          <img src="https://robostam.netlify.app/img/core-img/about.png" alt="" />
+        </div>
+      </div>
+
+
+
+      <div class="bg-solu">
+
+        <section class="solution">
+          <div class="solution-left w-50 bg-black">
+            <img class="solution-img" src="https://robostam.netlify.app/img/core-img/about3.png" alt="">
+          </div>
+          <div class="solution-right w-50">
+            <span class="typewrite fs-6 fw-bold">New problems need Creative and unusual Solutions</span>
+ 
+            <h4 style="margin-top: 26px" class="h fs-2" >Apply AI, Deep Learning and Data Sciece to solve Business Problems</h4>
+            <p style="color: gray">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Suscipit eum illum tempora? Ducimus eum culpa voluptates dolorem dolorum et sit nisi, mollitia animi porro fuga sequi, molestias repellat excepturi nobis eum culpa voluptates dolorem dolorum et.</p>
+            <div class="mt-5"> 
+              <div >
+                <div class="d-flex gap-4 align-items-center mb-4">
+                  <img style="" width="50" height="50" src="https://img.icons8.com/ultraviolet/80/checked--v1.png" alt="checked--v1"/>
+                  <div>
+                    <a style="color: black text-decoration" class="fw-bolder fs-5">Powerfull Mobile And Online App</a>
+                    <p style="color: gray">Lorem ipsum dolor sit amet, conse ctetur dolor adipisicing elit alias officia aperiam.</p>
+                  </div>
+                </div>
+                <div class="d-flex gap-4 align-items-center">
+                    <img style="" width="50" height="50" src="https://img.icons8.com/ultraviolet/80/checked--v1.png" alt="checked--v1"/>
+                  <div>
+                    <a style="color: black text-decoration" class="fw-bolder fs-5">Special For Multiple Use Capabilities</a>
+                    <p style="color: gray">Lorem ipsum dolor sit amet, conse ctetur dolor adipisicing elit alias officia aperiam.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+      </div>
+
+      <section class="about-us ">
+        <div class="pb-5 text-center">
+          <span style="color: #0dcaf0;" class="fw-bold">OUR POWERFUL FEATURES</span>
+          <h2 style="color:black">Why Choose Us</h2>
+          <p style="color: gray">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+          <p style="color: gray">Sed quis accumsan nisi Ut ut felis congue nisl hendrerit commodo.</p>
+        </div>
+        <div class="row gap-2">
+          {% block content %}
+  
+          {% endblock %}
+            <!-- <div class="bg-white col pt-4 pl-4 shadow p-3 mb-5 bg-body rounded">
+              <img width="65" height="65" src="https://img.icons8.com/ultraviolet/40/documents-folder.png" alt="documents-folder"/>
+            </div>
+            <div class="bg-white col pt-4 pl-4 shadow p-3 mb-5 bg-body rounded">
+              <img width="65" height="65" src="https://img.icons8.com/external-xnimrodx-blue-xnimrodx/64/external-shield-e-commerce-and-business-xnimrodx-blue-xnimrodx.png" alt="external-shield-e-commerce-and-business-xnimrodx-blue-xnimrodx"/>
+            </div>
+            <div class="bg-white col pt-4 pl-4 shadow p-3 mb-5 bg-body rounded">
+              <img width="65" height="65" src="https://img.icons8.com/water-color/50/time.png" alt="time"/>
+            </div> -->
+
+        </div>
+      </div>
+    </div>
+    
+
+
+  <!-- Hiệu ứng chữ chạy chạy  -->
+    <script>
+      var TxtType = function(el, toRotate, period) {
+        this.toRotate = toRotate;
+        this.el = el;
+        this.loopNum = 0;
+        this.period = parseInt(period, 10) || 2000;
+        this.txt = '';
+        this.tick();
+        this.isDeleting = false;
+    };
+
+    TxtType.prototype.tick = function() {
+        var i = this.loopNum % this.toRotate.length;
+        var fullTxt = this.toRotate[i];
+
+        if (this.isDeleting) {
+        this.txt = fullTxt.substring(0, this.txt.length - 1);
+        } else {
+        this.txt = fullTxt.substring(0, this.txt.length + 1);
+        }
+
+        this.el.innerHTML = '<span class="wrap">'+this.txt+'</span>';
+
+        var that = this;
+        var delta = 200 - Math.random() * 800;
+
+        if (this.isDeleting) { delta /= 2; }
+
+        if (!this.isDeleting && this.txt === fullTxt) {
+        delta = this.period;
+        this.isDeleting = true;
+        } else if (this.isDeleting && this.txt === '') {
+        this.isDeleting = false;
+        this.loopNum++;
+        delta = 500;
+        }
+
+        setTimeout(function() {
+        that.tick();
+        }, delta);
+    };
+
+    window.onload = function() {
+        var elements = document.getElementsByClassName('typewrite');
+        for (var i=0; i<elements.length; i++) {
+            var toRotate = elements[i].getAttribute('data-type');
+            var period = elements[i].getAttribute('data-period');
+            if (toRotate) {
+              new TxtType(elements[i], JSON.parse(toRotate), period);
+            }
+        }
+        // INJECT CSS
+        var css = document.createElement("style");
+        css.type = "text/css";
+        css.innerHTML = ".typewrite > .wrap { border-right: 0.08em solid #fff}";
+        document.body.appendChild(css);
+    };
+    </script>
+
+    <!-- hieu ung bachgrau doi mau -->
+     <script>
+      var header = document.querySelector("header")
+      window.addEventListener("scroll", function () {
+        if (document.documentElement.scrollTop > 100) {
+            header.classList.add("bg-whitee");
+        } else {
+            header.classList.remove("bg-whitee");
+        }
+    });
+     
+     </script>
+  </body>
+</html>

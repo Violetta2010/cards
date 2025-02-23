@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Upload Hình Ảnh</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            background: url('https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiRYtywcdzinWE11i32tf2Xiw7iddCgZDjDEJwt3r9KBfLj8FB57Qn27A-W8G9obd9KSl84SsBgbRs1sooqqu3OIoUZD-42RAsZB838KKuzSESDqM4K7wRKau8gMJTLjkuI7U6B9yMSIxbT/s1600/Gundam+Build+Fighters.png') no-repeat center center/cover;
+        }
+        h2 {
+            color: #fff;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+        }
+        input[type="file"] {
+            padding: 10px;
+            border: 2px solid #3498db;
+            border-radius: 5px;
+            background-color: #ecf0f1;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        input[type="file"]:hover {
+            background-color: #d6eaf8;
+        }
+        #preview {
+            margin-top: 20px;
+            max-width: 300px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            display: none;
+        }
+        .bg-blur {
+            padding: 20px;
+            border-radius: 20px;
+            position: relative;
+        }
+
+        .bg-blur::before {
+        content: "";
+        background: #000;
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        /* background: inherit; */
+        filter: blur(10px);
+        opacity: 50%;
+        z-index: -1;
+}
+    </style>
+</head>
+<body>
+    <div class="bg-blur">
+        
+        <h2>Chọn hình ảnh để tải lên</h2>
+        <input type="file" id="imageInput" accept="image/*">
+    </div>
+    <br>
+    <img id="preview" src="#" alt="Xem trước hình ảnh">
+
+    <script>
+        document.getElementById('imageInput').addEventListener('change', function(event) {
+            const file = event.target.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    const preview = document.getElementById('preview');
+                    preview.src = e.target.result;
+                    preview.style.display = 'block';
+                }
+                reader.readAsDataURL(file);
+            }
+        });
+    </script>
+</body>
+</html>

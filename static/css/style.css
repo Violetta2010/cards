@@ -1,0 +1,25 @@
+.top{
+    padding: 8px 120px 0px 120px;
+}
+.nav-link{
+    color: white;
+}
+.right{
+    padding: 0px 260px 0px 0px;
+}
+.left{
+    padding: 0px 60px 0px 0px;
+}
+.button-cs{
+    outline: none;
+    border: none;
+    border-radius: 5px;
+    border: 1px solid white;
+    padding: 8px 20px 8px 0px;
+    display: inline-block;
+    background: #0dcaf0;    
+}
+li {
+    list-style: none;
+}
+
