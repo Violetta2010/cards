@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect
-from django.http import HttpResponse
+from django.http import HttpResponse,JsonResponse
 from .forms import ImageUploadForm
 from .models import UploadedImage
 # Create your views here.
@@ -22,3 +22,8 @@ def upload_image(request):
 def image_list(request):
     images = UploadedImage.objects.all().order_by('-uploaded_at')
     return render(request, 'pages/image_list.html', {'images': images})
+      
+def get_images(request):
+    images = UploadedImage.objects.all().order_by('-uploaded_at')
+    print(images)
+    return JsonResponse(images, safe = False)
