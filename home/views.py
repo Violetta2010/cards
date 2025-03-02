@@ -24,6 +24,6 @@ def image_list(request):
     return render(request, 'pages/image_list.html', {'images': images})
       
 def get_images(request):
-    images = UploadedImage.objects.all().order_by('-uploaded_at')
-    print(images)
-    return JsonResponse(images, safe = False)
+    images = UploadedImage.objects.all().values("image")
+    list1 = list(images)
+    return JsonResponse(list1, safe = False)

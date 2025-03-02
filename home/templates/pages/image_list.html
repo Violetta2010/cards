@@ -134,165 +134,158 @@
     <ion-icon id="like" name="heart-circle-outline"></ion-icon>
 
     <!-- <script src="./card.js"></script> -->
-     <script>
-        class Card{
-    constructor({
-        imageUrl,
-        onDismiss,
-        onLike,
-        onDislike
-    }) {
-        this.imageUrl = imageUrl;
-        this.onDismiss = onDismiss;
-        this.onLike = onLike;
-        this.onDislike = onDislike;
-        this.#init();
-    }
+    <script>
+      class Card {
+        constructor({ imageUrl, onDismiss, onLike, onDislike }) {
+          this.imageUrl = imageUrl;
+          this.onDismiss = onDismiss;
+          this.onLike = onLike;
+          this.onDislike = onDislike;
+          this.#init();
+        }
 
-    // private properties
-    #startPoint;
-    #offsetX;
-    #offsetY;
+        // private properties
+        #startPoint;
+        #offsetX;
+        #offsetY;
 
-    //private methods
-    #init = ()=>{
-        const card = document.createElement('div');
-        card.classList.add('card');
-        const img = document.createElement('img');
-        img.src = this.imageUrl;
-        card.append(img);
-        this.element = card;
-        this.#listenToMouseEvents();
-    }
+        //private methods
+        #init = () => {
+          const card = document.createElement("div");
+          card.classList.add("card");
+          const img = document.createElement("img");
+          img.src = this.imageUrl;
+          card.append(img);
+          this.element = card;
+          this.#listenToMouseEvents();
+        };
 
-    #listenToMouseEvents = () => {
-        //mousedown
-        this.element.addEventListener('mousedown', e=>{
-            const {clientX, clientY}=e;
-            this.#startPoint = {x:clientX,y:clientY};
+        #listenToMouseEvents = () => {
+          //mousedown
+          this.element.addEventListener("mousedown", (e) => {
+            const { clientX, clientY } = e;
+            this.#startPoint = { x: clientX, y: clientY };
             //no transition when moving
-            this.element.style.transition = '';
-            document.addEventListener('mousemove', this.#handleMouseMove);
-        });
+            this.element.style.transition = "";
+            document.addEventListener("mousemove", this.#handleMouseMove);
+          });
 
-        // mouseup
-        document.addEventListener('mouseup',this.#handleMouseUp);
+          // mouseup
+          document.addEventListener("mouseup", this.#handleMouseUp);
 
-        // prevent drag
-        this.element.addEventListener('dragstart', e => {
+          // prevent drag
+          this.element.addEventListener("dragstart", (e) => {
             e.preventDefault();
-        })
-    }
+          });
+        };
 
-    #handleMouseMove = (e) => {
-        if (!this.#startPoint) return;
-        const {clientX, clientY} = e;
-        this.#offsetX = clientX - this.#startPoint.x;
-        this.#offsetY = clientY - this.#startPoint.y;
+        #handleMouseMove = (e) => {
+          if (!this.#startPoint) return;
+          const { clientX, clientY } = e;
+          this.#offsetX = clientX - this.#startPoint.x;
+          this.#offsetY = clientY - this.#startPoint.y;
 
-        const rotate = this.#offsetX * 0.1;
+          const rotate = this.#offsetX * 0.1;
 
-        this.element.style.transform =  `translate(${this.#offsetX}px, ${this.#offsetY}px) rotate(${rotate}deg)`;
+          this.element.style.transform = `translate(${this.#offsetX}px, ${
+            this.#offsetY
+          }px) rotate(${rotate}deg)`;
 
-        //dismiss card when moving too far away
-        if(Math.abs(this.#offsetX) > this.element.clientWidth * 0.7){
-            const direction = this.#offsetX > 0 ? 1 : -1; 
+          //dismiss card when moving too far away
+          if (Math.abs(this.#offsetX) > this.element.clientWidth * 0.7) {
+            const direction = this.#offsetX > 0 ? 1 : -1;
             this.#dismiss(direction);
-        }
-    }      
+          }
+        };
 
-    #handleMouseUp = (e) => {
-        this.#startPoint = null;
-        document.removeEventListener('mousemove', this.#handleMouseMove);
-        //transition when move back
-        this.element.style.transition = 'transform 0.5s';
-        this.element.style.transform = '';
-    }
+        #handleMouseUp = (e) => {
+          this.#startPoint = null;
+          document.removeEventListener("mousemove", this.#handleMouseMove);
+          //transition when move back
+          this.element.style.transition = "transform 0.5s";
+          this.element.style.transform = "";
+        };
 
-    #dismiss = (direction) => {
-        this.#startPoint = null;
-        document.removeEventListener('mouseup', this.#handleMouseUp);
-        document.removeEventListener('mousemove', this.#handleMouseMove);
+        #dismiss = (direction) => {
+          this.#startPoint = null;
+          document.removeEventListener("mouseup", this.#handleMouseUp);
+          document.removeEventListener("mousemove", this.#handleMouseMove);
 
-        this.element.style.transition = 'transform 1s';
-        this.element.style.transform =  ` translate(${direction * window.innerWidth}px, ${this.#offsetY}px) rotate(${90 * direction}deg)`;
-        this.element.classList.add('dismissing');
-        setTimeout(() => {
+          this.element.style.transition = "transform 1s";
+          this.element.style.transform = ` translate(${
+            direction * window.innerWidth
+          }px, ${this.#offsetY}px) rotate(${90 * direction}deg)`;
+          this.element.classList.add("dismissing");
+          setTimeout(() => {
             this.element.remove();
-        }, 1000);
+          }, 1000);
 
-        if(typeof this.onDismiss === 'function'){
+          if (typeof this.onDismiss === "function") {
             this.onDismiss();
-        }
-        if(typeof this.onLike === 'function'){
+          }
+          if (typeof this.onLike === "function") {
             this.onLike();
-            console.log('like')
-        }
-        if(typeof this.onDislike === 'function' && direction === -1){
+            console.log("like");
+          }
+          if (typeof this.onDislike === "function" && direction === -1) {
             this.onDislike();
-            console.log('dislike')
-        }
-    }
-}
-     </script>
+            console.log("dislike");
+          }
+        };
+      }
+    </script>
     <!-- <script src="./script.js"></script> -->
-     <script>
-        // DOM
-const swiper = document.querySelector('#swiper');
-const like = document.querySelector('#like');
-const dislike = document.querySelector('#dislike');
- 
-fetch("/get_images/") // Gọi API từ Django
-    .then(respone => response.json()) //Chuyển đổi phản hồi thành Json
-    .then(data => {
-        console.log(data); // Kiểm tra dữ liệu trong console
-    })
-    .catch(error => console.error("Lỗi:",error));
+    <script>
+      // DOM
 
+      fetch("/get_images/") // Gọi API từ Django
+        .then((respone) => respone.json())
+        .then((data) => {
+            console.log(data);
+            
+          const swiper = document.querySelector("#swiper");
+          const like = document.querySelector("#like");
+          const dislike = document.querySelector("#dislike");
+          const urls = data;
 
-// constants
-const urls = [
-    'https://gundamplacestore.com/cdn/shop/collections/image_053fed82-79db-4a58-84bb-e000810db3fe.jpg?v=1696812186&width=1100',
-    'https://en.gundam.info/images/gundaminfobox-global/article5/main.jpg',
-    'https://i.ytimg.com/vi/kGTpjYuR2Nk/hq720.jpg?sqp=-oaymwEhCK4FEIIDSFryq4qpAxMIARUAAAAAGAElAADIQj0AgKJD&rs=AOn4CLDnq9kG--cMyTf5wRX69lQuxP2XNA',
-    'https://i.ytimg.com/vi/CfdjG9UuoQI/hq720.jpg?sqp=-oaymwEhCK4FEIIDSFryq4qpAxMIARUAAAAAGAElAADIQj0AgKJD&rs=AOn4CLAt_oJxZNJBB1b_M-07JnudaE_LMA',
-    'https://i.ytimg.com/vi/NWKej7aJTlg/hq720.jpg?sqp=-oaymwEhCK4FEIIDSFryq4qpAxMIARUAAAAAGAElAADIQj0AgKJD&rs=AOn4CLBtL6b2C0XnydKZdyu8uj7n1MLgDA'
-];
+          // constants
 
-// variables
-let cardCount = 0;
+          // variables
+          let cardCount = 0;
 
-// functions
-function appendNewCard(){
-    const card = new Card({
-        imageUrl: urls[cardCount % 5],
-        onDismiss: appendNewCard,
-        onLike:() => {
-            like.style.animationPlayState = 'running';
-            // always trigger animation when toggling class
-            like.classList.toggle('trigger')
-        },
-        onDislike:() => {
-            dislike.style.animationPlayState = 'running';
-            // always trigger animation when toggling class
-            dislike.classList.toggle('trigger')
-        }
-    });
-    // card.element.style.setProperty('--i',cardCount%5);
-    swiper.append(card.element);
-    cardCount++;
+          // functions
+          function appendNewCard() {
+            const card = new Card({
+              imageUrl: urls[cardCount % 5],
+              onDismiss: appendNewCard,
+              onLike: () => {
+                like.style.animationPlayState = "running";
+                // always trigger animation when toggling class
+                like.classList.toggle("trigger");
+              },
+              onDislike: () => {
+                dislike.style.animationPlayState = "running";
+                // always trigger animation when toggling class
+                dislike.classList.toggle("trigger");
+              },
+            });
+            // card.element.style.setProperty('--i',cardCount%5);
+            swiper.append(card.element);
+            cardCount++;
 
-    const cards = swiper.querySelectorAll('.card:not(.dismissing');
-    cards.forEach((card, index) => {
-        card.style.setProperty('--i', index);
-    });
-}
+            const cards = swiper.querySelectorAll(".card:not(.dismissing");
+            cards.forEach((card, index) => {
+              card.style.setProperty("--i", index);
+            });
+          }
 
-// first 5 cards
-for (let i = 0; i < 5; i++){
-    appendNewCard();
-}
-     </script>
+          // first 5 cards
+          for (let i = 0; i < 5; i++) {
+            appendNewCard();
+          }
+        })
+        .catch((error) => console.error("Lỗi:", error));
+    </script>
 
     <script
       type="module"
